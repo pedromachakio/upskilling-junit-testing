@@ -3,6 +3,7 @@ package com.backend.projects.unittesting.MockingDemo.Business;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -86,5 +87,20 @@ public class ListMockTest {
 
         assertEquals("SomeString1", allValues.get(0));
         assertEquals("SomeString2", allValues.get(1));
+    }
+
+    public void spying() {
+
+        ArrayList arrayListMock = mock (ArrayList.class);
+
+
+        arrayListMock.get(0); // null
+        arrayListMock.size(); // 0
+        arrayListMock.add("Blabla");
+        arrayListMock.size(); // vai continuar a ser 0 mesmo depois da linha anterior porque os mocks não retêm comportamento, para isso see below
+
+        when(arrayListMock.size()).thenReturn(3); // aqui digo que quando o .size for chamado quero que o valor retornado seja 3 (ou any other value)
+        arrayListMock.size(); // aqui ja vai dar 3, graças à linha anterior
+
     }
 }
