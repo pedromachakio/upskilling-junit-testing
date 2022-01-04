@@ -89,9 +89,9 @@ public class ListMockTest {
         assertEquals("SomeString2", allValues.get(1));
     }
 
-    public void spying() {
+    public void mocking() {
 
-        ArrayList arrayListMock = mock (ArrayList.class);
+        ArrayList arrayListMock = mock(ArrayList.class);
 
 
         arrayListMock.get(0); // null
@@ -101,6 +101,21 @@ public class ListMockTest {
 
         when(arrayListMock.size()).thenReturn(3); // aqui digo que quando o .size for chamado quero que o valor retornado seja 3 (ou any other value)
         arrayListMock.size(); // aqui ja vai dar 3, graças à linha anterior
+
+    }
+
+    public void spying() { // com spy pode fazer-se verificações numa class sem fazer um mock da mesma; utiliza a actual class existente
+        // se por exemplo nao tiver acesso ao codigo que quero mock
+
+        ArrayList arrayListSpy = spy(ArrayList.class);
+
+        arrayListSpy.add("Blabla");
+        arrayListSpy.get(0); // prints Blabla. O spy retains the behaviour of the original class
+        arrayListSpy.size(); // 1
+
+
+        when(arrayListSpy.size()).thenReturn(3); // mas este thenReturn dá sempre override ao original code
+        arrayListSpy.size(); // 3
 
     }
 }
