@@ -39,7 +39,7 @@ class SomeBusinessMockTest {
     void calculateSumUsingDataService_basic() {
         when(someDataServiceMock.retrieveAllData()).thenReturn(new int[]{1, 2, 3});
 
-        // CTRL ALT N para move to inline
+        // CTRL ALT N para move to inline, em vez de ter variavel expectedResult sozinha numa linha
         assertEquals(6, businessImp.calculateSumUsingDataService());
     }
 
