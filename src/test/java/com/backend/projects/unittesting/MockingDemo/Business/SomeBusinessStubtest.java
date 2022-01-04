@@ -10,7 +10,9 @@ class SomeDataServiceStub implements SomeDataService {
     public int[] retrieveAllData() {
         return new int[]{1, 2, 3};
     }
-}class SomeDataServiceStubEmpty implements SomeDataService {
+}
+
+class SomeDataServiceStubEmpty implements SomeDataService {
     @Override
     public int[] retrieveAllData() {
         return new int[]{};
